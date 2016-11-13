@@ -2,6 +2,7 @@ package com.rahul.contract.controller;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rahul.contract.dao.Contract;
@@ -11,10 +12,13 @@ import com.rahul.contract.dao.Contract;
  * @created on Nov 4, 2016 11:17:48 PM
  */
 @RestController
-@RequestMapping(ContractController.CONTRACT_BASE_URI)
 public class ContractController {
 
-	public static final String CONTRACT_BASE_URI = "src/v1/controllers";
+	@ResponseBody
+	@RequestMapping("/")
+	String entry(){
+		return "My Spring Boot App";
+	}
 
 	@RequestMapping(value="{contractNumber}")
 	public Contract getContract(@PathVariable final int contractNumber) {
